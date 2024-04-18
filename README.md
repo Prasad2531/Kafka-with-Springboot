@@ -8,27 +8,39 @@ Kafka Location Data Producer and Consumer is a Java Spring Boot application that
    - Java 11 or higher
    - Apache Kafka (installation instructions: [Apache Kafka Quickstart](https://kafka.apache.org/quickstart))
 
-2. **Running the Application**:
-   - Start Apache Kafka and create a topic named `location-data`:
+2. **Useful commands**:
+   - To Start the Zookeeper and Kafka server using following commands
      ```sh
-     bin/kafka-server-start.sh config/server.properties
-     bin/kafka-topics.sh --create --topic location-data --bootstrap-server localhost:9092
-     ```
-   - Run the Spring Boot application:
+     bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+     bin\windows\kafka-server-start.bat config\server.properties
      ```sh
-     ./mvnw spring-boot:run
+   -  To create Kafka topic named `location-update-topic`:
+     ```sh
+     bin\windows\kafka-topics.bat --create --topic location-update-topic --bootstrap-server localhost:9092
      ```
+   - To start the Producer on this topic:
+     ```sh
+     bin\windows\kafka-console-producer.bat --topic location-update-topic --bootstrap-server localhost:9092
+     ```
+   - To start the Consumer on this topic:
+     ```sh
+     bin\windows\kafka-console-consumer.bat --topic location-update-topic --from-beginning --bootstrap-server localhost:9092
+     ```
+   - Or you can directly run the Spring Boot application to register the producer and consumer for the same topic.
+     
 
-3. **Producing and Consuming Data**:
-   - The producer endpoint (`/produce`) generates and sends 200,000 sample location data entries to the Kafka topic `location-data`.
-   - The consumer consumes messages from the `location-data` topic and logs them to the console.
+4. **Producing and Consuming Data**:
+   - The producer endpoint (`/update`) generates and sends 200,000 sample location data entries to the Kafka topic `location-data-topic`.
+   - The consumer consumes messages from the `location-data-topic` topic and logs them to the console.
+   - You can simultaneously view this from console as well.
 
 ## Project Structure
 
-- `src/main/java/com/example/kafka/`: Contains the main application code.
-  - `KafkaProducerController.java`: Defines the REST controller for producing data.
-  - `KafkaConsumer.java`: Defines the Kafka consumer for consuming data.
+- `src/main/java/com/deliveryboy/service/`: Contains the service class for producing location data.
+- `src/main/java/com/deliveryboy/controller/`: Contains the controller class for exposing the REST Endpoint.
+- `src/main/java/com/deliveryboy/config/`: Contains the Kafka configuration class.
 - `src/main/resources/`: Contains application properties and Kafka configuration.
+  Similarly for Consumer ther are similar files
 
 ## Configuration
 
@@ -36,5 +48,5 @@ Kafka configurations can be modified in `src/main/resources/application.properti
 
 ## Usage
 
-- Access the producer endpoint at http://localhost:8080/produce to start producing data.
+- Access the producer endpoint at http://localhost:8080/location/update and hit POST request to start producing data.
 - Check the console logs to see the consumed data.
