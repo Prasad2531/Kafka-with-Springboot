@@ -1,6 +1,8 @@
-# Kafka Location Data Producer and Consumer
+# Apache Kafka with Springboot
+Apache Kafka is an open source distributed data streaming platform that can process, publish, store, and subscribe to streams of data in real time developed by LinkedIn and Apache. It can handle data streams from many sources and deliver them to many consumers.
 
-Kafka Location Data Producer and Consumer is a Java Spring Boot application that demonstrates how to use Apache Kafka to produce and consume dummy location data.
+##Basic Idea for the Project
+This is a Java Spring Boot application that demonstrates how to use Apache Kafka to produce and consume dummy location data. Startup Giant Zomato uses the same idea for continuous location update of the delivery partner to the user. 
 
 ## Installation
 
