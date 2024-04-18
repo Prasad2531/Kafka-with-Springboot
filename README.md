@@ -13,7 +13,7 @@ Kafka Location Data Producer and Consumer is a Java Spring Boot application that
      ```sh
      bin\windows\zookeeper-server-start.bat config\zookeeper.properties
      bin\windows\kafka-server-start.bat config\server.properties
-     ```sh
+     ```
    -  To create Kafka topic named `location-update-topic`:
      ```sh
      bin\windows\kafka-topics.bat --create --topic location-update-topic --bootstrap-server localhost:9092
