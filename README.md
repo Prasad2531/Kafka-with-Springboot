@@ -3,7 +3,7 @@ Apache Kafka is an open source distributed data streaming platform that can proc
 
 ## Basic Idea for the Project
 
-This is a Java Spring Boot application that demonstrates how to use Apache Kafka to produce and consume dummy location data. Startup Giant Zomato uses the same idea for continuous location update of the delivery partner to the user. 
+This is a Java Spring Boot application that demonstrates how to use Apache Kafka to produce and consume dummy location data. Many tech giants like Uber, Zomato etc. use Apache Kafka as a datahub for continuous location update of the cabs or delivery partner(in the case of food delivery companies) ans then pass it on to the end user. 
 
 ## Installation
 
